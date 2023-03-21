@@ -39,6 +39,12 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e,sys)
         
-        
+from src.components.data_transformation import DataTransformation
 if __name__ == "__main__":
-    print(DataIngestion().initiate_data_ingestion())
+    obj = DataIngestion()
+    
+    train_data, test_data = obj.initiate_data_ingestion()
+    
+    trans_obj = DataTransformation()
+    
+    trans_obj.initiate_data_transformation(train_data,test_data)
